@@ -35,7 +35,7 @@
     unstickit: function(model) {
       _.each(this._modelBindings, _.bind(function(binding, i) {
         if (model && binding.model !== model) return false;
-        binding.model.off(binding.event, binding.fn);
+        binding.model.off(binding.event, binding.fn, this);
         binding.model.trigger('stickit:unstuck');
         delete this._modelBindings[i];
       }, this));
